@@ -46,15 +46,6 @@ export default function Category({ livre, search }) {
                 ))}
 
 
-
-
-
-
-
-
-
-
-
             </Row>
         </Container >
 

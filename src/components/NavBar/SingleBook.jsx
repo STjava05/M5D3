@@ -1,9 +1,11 @@
 import React from 'react';
 import { Card,Col } from 'react-bootstrap';
 import { useState } from 'react';
+import CommentModal from '../CommentModal';
 
 function SingleBook({ livre }) {
   const [selected, setSelected] = useState(false);
+  const[show,setShow]=useState(false);
 
  const handleClick = (e) => {
  
@@ -18,7 +20,9 @@ function SingleBook({ livre }) {
     }
 
   };
-  
+  const handleModal = () => { 
+    setShow(!show);
+  };
   return (
     <Col xs={3}>  
     <Card className="phase" onClick={handleClick}>
@@ -27,7 +31,10 @@ function SingleBook({ livre }) {
         <Card.Title>{livre.title}</Card.Title>
         <Card.Text>{livre.category}</Card.Text>
         <Card.Text>{livre.price}</Card.Text>
-      </Card.Body>
+        <Card.Text>{livre.asin}</Card.Text>
+        <button className='btn btn-primary' onClick={handleModal}>Show</button>
+        {show && <CommentModal  handleModal={handleModal} asin={livre.asin}  />}
+        </Card.Body>
     </Card>
     </Col>
     
